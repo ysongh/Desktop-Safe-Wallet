@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Typography, Select, Button } from 'antd';
+import { MetaMaskSDK } from '@metamask/sdk';
 
 const NETWORK_LIST = [
   {
@@ -12,11 +13,23 @@ const NETWORK_LIST = [
   }
 ];
 
-const Home = ({ login, network, setNetwork }) => {
+const options = {
+  injectProvider: false,
+  communicationLayerPreference: 'webrtc',
+};
+
+const Home = ({ network, setNetwork }) => {
 
   const handleChange = (value) => {
     setNetwork(value);
-  }  
+  }
+
+  const loginWithMetaMask = () => {
+    const MMSDK = new MetaMaskSDK(options);
+
+    const ethereum = MMSDK.getProvider();
+    ethereum.request({ method: 'eth_requestAccounts', params: [] });
+  }
 
   return (
     <center>
@@ -33,7 +46,7 @@ const Home = ({ login, network, setNetwork }) => {
       />
       <br />
       <br />
-      <Button onClick={login} type="primary" size='large' disabled={!network}>
+      <Button onClick={loginWithMetaMask} type="primary" size='large' disabled={!network}>
         Login
       </Button>
     </center>
