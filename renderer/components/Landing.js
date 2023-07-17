@@ -16,6 +16,7 @@ const NETWORK_LIST = [
 const options = {
   injectProvider: false,
   communicationLayerPreference: 'webrtc',
+  dappMetadata: {name: "My Dapp", url: "http://localhost:8000"}
 };
 
 const Home = ({ network, setNetwork, setWalletAddress }) => {
