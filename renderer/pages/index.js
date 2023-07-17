@@ -25,10 +25,6 @@ const Dashboard = () => {
   
   const [currentTab, setCurrentTab] = useState("Overview");
 
-  useEffect(() => {
-    if(network) createInstanceAuth();
-  }, [network])
-
   const Overview = () => {
     return (
       <div id='stripe-root'>
@@ -48,9 +44,9 @@ const Dashboard = () => {
   return (
     <>
       { !walletAddress
-        ? <Landing network={network} setNetwork={setNetwork} />
+        ? <Landing network={network} setNetwork={setNetwork} setWalletAddress={setWalletAddress} />
         : <Layout>
-          <Navbar logout={logout} networkName={NETWORK[network]?.networkName} />
+          <Navbar networkName={NETWORK[network]?.networkName} />
           <Layout>
             <Sider width={150} style={{ backgroundColor: 'white' }}>
               <Menu

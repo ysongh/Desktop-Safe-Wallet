@@ -18,13 +18,14 @@ const options = {
   communicationLayerPreference: 'webrtc',
 };
 
-const Home = ({ network, setNetwork }) => {
+const Home = ({ network, setNetwork, setWalletAddress }) => {
 
   const handleChange = (value) => {
     setNetwork(value);
   }
 
   const loginWithMetaMask = () => {
+    setWalletAddress("0x0");
     const MMSDK = new MetaMaskSDK(options);
 
     const ethereum = MMSDK.getProvider();
