@@ -25,12 +25,14 @@ const Home = ({ network, setNetwork, setWalletAddress }) => {
     setNetwork(value);
   }
 
-  const loginWithMetaMask = () => {
-    setWalletAddress("0x0");
+  const loginWithMetaMask = async () => {
+   
     const MMSDK = new MetaMaskSDK(options);
 
     const ethereum = MMSDK.getProvider();
-    ethereum.request({ method: 'eth_requestAccounts', params: [] });
+    const accounts = await ethereum.request({ method: 'eth_requestAccounts', params: [] });
+    console.log(accounts)
+    setWalletAddress(accounts[0]);
   }
 
   return (
