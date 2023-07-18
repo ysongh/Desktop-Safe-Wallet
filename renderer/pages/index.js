@@ -44,7 +44,12 @@ const Dashboard = () => {
   return (
     <>
       { !walletAddress
-        ? <Landing network={network} setNetwork={setNetwork} setWalletAddress={setWalletAddress} />
+        ? <Landing
+            network={network}
+            setNetwork={setNetwork}
+            setWalletAddress={setWalletAddress}
+            setProvider={setProvider}
+            setSigner={setSigner} />
         : <Layout>
           <Navbar networkName={NETWORK[network]?.networkName} />
           <Layout>

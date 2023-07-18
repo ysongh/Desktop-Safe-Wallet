@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Select, Button } from 'antd';
 import { MetaMaskSDK } from '@metamask/sdk';
+import { ethers } from 'ethers';
 
 const NETWORK_LIST = [
   {
@@ -19,20 +20,21 @@ const options = {
   dappMetadata: {name: "My Dapp", url: "http://localhost:8000"}
 };
 
-const Home = ({ network, setNetwork, setWalletAddress }) => {
+const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner }) => {
 
   const handleChange = (value) => {
     setNetwork(value);
   }
 
   const loginWithMetaMask = async () => {
-   
     const MMSDK = new MetaMaskSDK(options);
-
     const ethereum = MMSDK.getProvider();
     const accounts = await ethereum.request({ method: 'eth_requestAccounts', params: [] });
-    console.log(accounts)
     setWalletAddress(accounts[0]);
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    setProvider(provider);
+    const signer = provider.getSigner();
+    setSigner(signer);
   }
 
   return (
