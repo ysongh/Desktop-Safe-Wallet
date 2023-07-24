@@ -15,9 +15,18 @@ const NETWORK_LIST = [
 ];
 
 const options = {
-  injectProvider: false,
-  communicationLayerPreference: 'webrtc',
-  dappMetadata: {name: "My Dapp", url: "http://localhost:8000"}
+  useDeeplink: false,
+  communicationServerUrl: 'https://metamask-sdk-socket.metafi.codefi.network/',
+  autoConnect: {
+    enable: true
+  },
+  dappMetadata: {name: "My Dapp", url: "http://localhost:8000"},
+  logging: {
+    developerMode: true,
+  },
+  storage: {
+    enabled: true,
+  }
 };
 
 const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner }) => {
