@@ -29,7 +29,7 @@ const options = {
   }
 };
 
-const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner }) => {
+const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner, setBalance }) => {
 
   const handleChange = (value) => {
     setNetwork(value);
@@ -44,6 +44,9 @@ const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner })
     setProvider(provider);
     const signer = provider.getSigner();
     setSigner(signer);
+
+    const balance = await provider.getBalance(accounts[0]);
+    setBalance(balance.toString());
   }
 
   return (

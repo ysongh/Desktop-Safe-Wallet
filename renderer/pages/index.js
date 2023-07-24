@@ -16,8 +16,7 @@ const Dashboard = () => {
 
   const [network, setNetwork] = useState("");
   const [walletAddress, setWalletAddress] = useState();
-  const [balance, setBalance] = useState();
-  const [safeAuth, setSafeAuth] = useState();
+  const [balance, setBalance] = useState(0);
   const [provider, setProvider] = useState(null);
   const [signer, setSigner] = useState(null);
   const [userData, setUserData] = useState();
@@ -49,7 +48,8 @@ const Dashboard = () => {
             setNetwork={setNetwork}
             setWalletAddress={setWalletAddress}
             setProvider={setProvider}
-            setSigner={setSigner} />
+            setSigner={setSigner}
+            setBalance={setBalance} />
         : <Layout>
           <Navbar networkName={NETWORK[network]?.networkName} />
           <Layout>
