@@ -51,7 +51,7 @@ const Dashboard = () => {
             setSigner={setSigner}
             setBalance={setBalance} />
         : <Layout>
-          <Navbar networkName={NETWORK[network]?.networkName} />
+          <Navbar networkName={NETWORK[network]?.networkName} setWalletAddress={setWalletAddress} />
           <Layout>
             <Sider width={150} style={{ backgroundColor: 'white' }}>
               <Menu
