@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Receive from '../components/Receive';
 import TransferForm from '../components/TransferForm';
 import Transaction from '../components/Transaction';
+import BurnerWallet from '../components/BurnerWallet';
 import Landing from '../components/Landing';
 
 const { Content, Sider } = Layout;
@@ -25,6 +26,8 @@ const Dashboard = () => {
   const [currentTab, setCurrentTab] = useState("Overview");
 
   const Overview = () => {
+   
+    
     return (
       <div id='stripe-root'>
         <Typography.Title level={2}>
@@ -72,6 +75,9 @@ const Dashboard = () => {
                 <Menu.Item key="Transaction">
                   Transaction
                 </Menu.Item>
+                <Menu.Item key="BurnerWallet">
+                  Burner Wallet
+                </Menu.Item>
               </Menu>
             </Sider>
             <Layout style={{ padding: '0 24px 24px' }}>
@@ -83,9 +89,10 @@ const Dashboard = () => {
                 }}
               >
                 {currentTab === "Overview" && <Overview />}
-                {currentTab === "Send" && <TransferForm balance={balance} messageApi={messageApi} walletAddress={walletAddress} signer={signer} network={network} />}
+                {currentTab === "Send" && <TransferForm balance={balance} messageApi={messageApi} walletAddress={walletAddress} signer={signer} network={network} provider={provider} />}
                 {currentTab === "Receive" && <Receive walletAddress={walletAddress} />}
                 {currentTab === "Transaction" && <Transaction />}
+                {currentTab === "BurnerWallet" && <BurnerWallet />}
               </Content>
             </Layout>
           </Layout>
