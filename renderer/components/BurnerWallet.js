@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import { Button, Typography } from 'antd';
 
-const BurnerWallet = () => {
+import { createWallet } from '../utils/wallet';
+
+const BurnerWallet = ({ provider }) => {
   const [address, setAddress] = useState();
   const [mnemonic, setMnemonic] = useState();
   const [privateKey, setPrivateKey] = useState();
 
   const createBurnerWallet = () => {
-
+    const wallet = createWallet(provider);
+    console.log(wallet);
+    setAddress(wallet.address);
+    setMnemonic(wallet.mnemonic.phrase);
+    setPrivateKey(wallet.privateKey);
   }
   
   return (
@@ -19,6 +25,13 @@ const BurnerWallet = () => {
       <Button onClick={createBurnerWallet}  type="primary">
         Create
       </Button>
+
+      <br />
+      <br />
+
+      <p>{address}</p>
+      <p>{mnemonic}</p>
+      <p>{privateKey}</p>
     </>
   )
 }

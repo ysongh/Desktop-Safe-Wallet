@@ -89,10 +89,10 @@ const Dashboard = () => {
                 }}
               >
                 {currentTab === "Overview" && <Overview />}
-                {currentTab === "Send" && <TransferForm balance={balance} messageApi={messageApi} walletAddress={walletAddress} signer={signer} network={network} provider={provider} />}
+                {currentTab === "Send" && <TransferForm balance={balance} messageApi={messageApi} walletAddress={walletAddress} signer={signer} network={network} />}
                 {currentTab === "Receive" && <Receive walletAddress={walletAddress} />}
                 {currentTab === "Transaction" && <Transaction />}
-                {currentTab === "BurnerWallet" && <BurnerWallet />}
+                {currentTab === "BurnerWallet" && <BurnerWallet provider={provider} />}
               </Content>
             </Layout>
           </Layout>

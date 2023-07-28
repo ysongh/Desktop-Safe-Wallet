@@ -28,3 +28,8 @@ export const sendETH = async (to, amount, walletAddress, signer, messageApi, net
 
   return data;
 }
+
+export const createWallet = (provider) => {
+  const wallet = ethers.Wallet.createRandom().connect(provider);
+  return wallet;
+}
