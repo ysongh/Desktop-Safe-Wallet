@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Layout, Menu, Typography, Tag, message } from 'antd';
+import { Layout, Menu, message } from 'antd';
 import { NETWORK } from '../network';
 
 import 'antd/dist/reset.css';
 import Navbar from '../components/Navbar';
+import Overview from '../components/Overview';
 import Receive from '../components/Receive';
 import TransferForm from '../components/TransferForm';
 import Transaction from '../components/Transaction';
@@ -24,24 +25,6 @@ const Dashboard = () => {
   const [sfSdk, setSfSdk] = useState(null);
   
   const [currentTab, setCurrentTab] = useState("Overview");
-
-  const Overview = () => {
-   
-    
-    return (
-      <div id='stripe-root'>
-        <Typography.Title level={2}>
-          Overview
-        </Typography.Title>
-        <Tag color="purple" style={{ marginBottom: '1rem' }}>{NETWORK[network]?.networkName}</Tag>
-        <a href={`${NETWORK[network]?.explorer}/address/${walletAddress}`} target="_blank" rel="noopener noreferrer">{walletAddress}</a>
-        <p>{balance / 10 ** 18} {NETWORK[network]?.tokenSymbol}</p>
-        {/* <Button onClick={() => createUserWalletToPB("")} type="primary" style={{ marginBottom: '2rem' }}>
-          Add Fund
-        </Button> */}
-      </div>
-    )
-  }
 
   return (
     <>
@@ -88,7 +71,7 @@ const Dashboard = () => {
                   minHeight: 480,
                 }}
               >
-                {currentTab === "Overview" && <Overview />}
+                {currentTab === "Overview" && <Overview network={network} walletAddress={walletAddress} balance={balance} />}
                 {currentTab === "Send" && <TransferForm balance={balance} messageApi={messageApi} walletAddress={walletAddress} signer={signer} network={network} />}
                 {currentTab === "Receive" && <Receive walletAddress={walletAddress} />}
                 {currentTab === "Transaction" && <Transaction />}
