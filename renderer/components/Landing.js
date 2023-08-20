@@ -3,6 +3,8 @@ import { Typography, Select, Button } from 'antd';
 import { MetaMaskSDK } from '@metamask/sdk';
 import { ethers } from 'ethers';
 
+import BurnerWallet from './BurnerWallet';
+
 const NETWORK_LIST = [
   {
     value: 'polygon',
@@ -67,6 +69,9 @@ const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner, s
       <Button onClick={loginWithMetaMask} type="primary" size='large' disabled={!network}>
         Login
       </Button>
+      <br />
+      <br />
+      <BurnerWallet />
     </center>
   )
 }
