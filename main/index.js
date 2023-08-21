@@ -20,17 +20,13 @@ app.on('ready', async () => {
     },
   })
 
-  // const url = isDev
-  //   ? 'http://localhost:8000'
-  //   : format({
-  //       pathname: join(__dirname, '../renderer/out/index.html'),
-  //       protocol: 'file:',
-  //       slashes: true,
-  //     })
-
   const url = isDev
     ? 'http://localhost:8000'
-    : 'https://desktopsafewallet.netlify.app/'
+    : format({
+        pathname: join(__dirname, '../renderer/out/index.html'),
+        protocol: 'file:',
+        slashes: true,
+      })
 
   mainWindow.loadURL(url)
 })
