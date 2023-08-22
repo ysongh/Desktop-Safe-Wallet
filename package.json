@@ -2,7 +2,7 @@
   "name": "desktop-safe-wallet",
   "version": "0.1.0",
   "private": true,
-  "productName": "Desktop Safe Wallet",
+  "productName": "Burner Wallet",
   "main": "main/index.js",
   "scripts": {
     "clean": "rimraf dist renderer/.next renderer/out",
