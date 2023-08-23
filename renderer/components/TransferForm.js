@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Button, Form, Input, Typography } from 'antd';
 
 import { sendETH } from '../utils/wallet';
-import { addTransactionToPB } from '../utils/polybase';
 import { NETWORK } from '../network';
 
 const TransferForm = ({ walletAddress, messageApi, signer, network }) => {
@@ -31,7 +30,6 @@ const TransferForm = ({ walletAddress, messageApi, signer, network }) => {
     try {
       setLoading(true);
       const tx = await sendETH(to, amount, walletAddress, signer, messageApi, network);
-      await addTransactionToPB(tx.transactionHash, tx.from, tx.to, amount, tx.blockNumber.toString(), "Send", NETWORK[network].tokenSymbol);
       setLoading(false);
     } catch (error) {
       console.log(error);

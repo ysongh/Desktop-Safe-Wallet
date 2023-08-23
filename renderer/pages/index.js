@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar';
 import Overview from '../components/Overview';
 import Receive from '../components/Receive';
 import TransferForm from '../components/TransferForm';
-import Transaction from '../components/Transaction';
 import BurnerWallet from '../components/BurnerWallet';
 import Landing from '../components/Landing';
 
@@ -55,9 +54,6 @@ const Dashboard = () => {
                 <Menu.Item key="Receive">
                   Receive
                 </Menu.Item>
-                <Menu.Item key="Transaction">
-                  Transaction
-                </Menu.Item>
                 <Menu.Item key="BurnerWallet">
                   Burner Wallet
                 </Menu.Item>
@@ -74,7 +70,6 @@ const Dashboard = () => {
                 {currentTab === "Overview" && <Overview network={network} walletAddress={walletAddress} balance={balance} />}
                 {currentTab === "Send" && <TransferForm balance={balance} messageApi={messageApi} walletAddress={walletAddress} signer={signer} network={network} />}
                 {currentTab === "Receive" && <Receive walletAddress={walletAddress} />}
-                {currentTab === "Transaction" && <Transaction />}
                 {currentTab === "BurnerWallet" && <BurnerWallet provider={provider} />}
               </Content>
             </Layout>
