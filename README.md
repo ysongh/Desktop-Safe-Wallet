@@ -1,2 +1,2 @@
-# Desktop Safe Wallet
-A desktop wallet
+# Desktop Burner Wallet
+A desktop to create burner wallet
