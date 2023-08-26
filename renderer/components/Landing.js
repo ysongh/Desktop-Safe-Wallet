@@ -1,5 +1,5 @@
-import React from 'react';
-import { Typography, Select, Button } from 'antd';
+import { useState } from 'react';
+import { Menu, Typography, Select, Button } from 'antd';
 import { MetaMaskSDK } from '@metamask/sdk';
 import { ethers } from 'ethers';
 
@@ -32,6 +32,7 @@ const options = {
 };
 
 const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner, setBalance }) => {
+  const [currentTab, setCurrentTab] = useState("Overview");
 
   const handleChange = (value) => {
     setNetwork(value);
@@ -53,25 +54,36 @@ const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner, s
 
   return (
     <center>
-      <Typography.Title level={2} style={{ marginTop: '10rem', marginBottom: '2rem' }}>
-        Desktop Safe Wallet
-      </Typography.Title>
-      <Select
-        placeholder="Select a Network"
-        style={{
-          width: 200,
-        }}
-        onChange={handleChange}
-        options={NETWORK_LIST}
-      />
-      <br />
-      <br />
-      <Button onClick={loginWithMetaMask} type="primary" size='large' disabled={!network}>
-        Login
-      </Button>
-      <br />
-      <br />
-      <BurnerWallet />
+      <Menu
+        onClick={(e) => setCurrentTab(e.key)}
+        selectedKeys={[currentTab]}
+        defaultOpenKeys={['Overview']}
+        mode="horizontal"
+      >
+        <Menu.Item key="Burner Wallet">
+          Burner Wallet
+        </Menu.Item>
+        <Menu.Item key="MetaMask SDK">
+          MetaMask SDK
+        </Menu.Item>
+      </Menu>
+      {currentTab === "MetaMask SDK" && <div>
+        <Typography.Title level={2} style={{ marginTop: '10rem', marginBottom: '2rem' }}>
+          Desktop Safe Wallet
+        </Typography.Title>
+        <Select
+          placeholder="Select a Network"
+          style={{
+            width: 200,
+          }}
+          onChange={handleChange}
+          options={NETWORK_LIST}
+        />
+         <Button onClick={loginWithMetaMask} type="primary" size='large' disabled={!network}>
+          Login
+        </Button>
+      </div>}
+      {currentTab === "Burner Wallet" && <BurnerWallet />}
     </center>
   )
 }
