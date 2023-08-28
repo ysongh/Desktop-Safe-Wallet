@@ -17,7 +17,7 @@ const BurnerWallet = ({ provider }) => {
   }
   
   return (
-    <>
+    <div style={{ marginTop: "7rem" }}>
       <Typography.Title level={2}>
         Create Burner Wallet
       </Typography.Title>
@@ -32,7 +32,7 @@ const BurnerWallet = ({ provider }) => {
       <p>{address}</p>
       <p>{mnemonic}</p>
       <p>{privateKey}</p>
-    </>
+    </div>
   )
 }
 

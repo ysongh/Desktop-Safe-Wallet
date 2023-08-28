@@ -32,7 +32,7 @@ const options = {
 };
 
 const Home = ({ network, setNetwork, setWalletAddress, setProvider, setSigner, setBalance }) => {
-  const [currentTab, setCurrentTab] = useState("Overview");
+  const [currentTab, setCurrentTab] = useState("Burner Wallet");
 
   const handleChange = (value) => {
     setNetwork(value);

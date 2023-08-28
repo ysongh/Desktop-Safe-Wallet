@@ -20,8 +20,6 @@ const Dashboard = () => {
   const [balance, setBalance] = useState(0);
   const [provider, setProvider] = useState(null);
   const [signer, setSigner] = useState(null);
-  const [userData, setUserData] = useState();
-  const [sfSdk, setSfSdk] = useState(null);
   
   const [currentTab, setCurrentTab] = useState("Overview");
 
