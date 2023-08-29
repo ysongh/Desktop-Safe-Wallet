@@ -29,8 +29,11 @@ const BurnerWallet = ({ provider }) => {
       <br />
       <br />
 
+      {address && <p style={{ textDecoration: "underline"}}>Address</p>}
       <p>{address}</p>
+      {mnemonic && <p style={{ textDecoration: "underline"}}>Mnemonic</p>}
       <p>{mnemonic}</p>
+      {privateKey && <p style={{ textDecoration: "underline"}}>Private Key</p>}
       <p>{privateKey}</p>
     </div>
   )
