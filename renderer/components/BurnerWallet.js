@@ -18,6 +18,7 @@ const BurnerWallet = ({ provider }) => {
   
   return (
     <div style={{ marginTop: "7rem" }}>
+      <img src="/burnwalllet.png" alt="Icon" />
       <Typography.Title level={2}>
         Create Burner Wallet
       </Typography.Title>
