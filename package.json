@@ -1,7 +1,9 @@
 {
-  "name": "desktop-safe-wallet",
+  "name": "desktop-burner-wallet",
+  "author": "ysongh",
   "version": "0.1.0",
   "private": true,
+  "description": "A desktop to create burner wallet",
   "productName": "Burner Wallet",
   "main": "main/index.js",
   "scripts": {
